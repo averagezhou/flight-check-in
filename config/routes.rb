@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-
+  # READ
+  get("/", { :controller => "users", :action => "index" })
+  get("/users/:path_id", { :controller => "users", :action => "show" })
+  
 
   # Routes for the User account:
 

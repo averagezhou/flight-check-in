@@ -1,0 +1,131 @@
+<div>
+  <%= notice %>
+</div>
+
+<h1><%= @user.email %></h1>
+
+<dl>
+  <dt>ID</dt>
+  <dd><%= @user.id %></dd>
+
+
+  
+
+
+  <dt>Edit user</dt>
+  <dd>
+    <form action="/update_user/<%= @user.id %>" >
+      <label for="browser_email">Email</label>
+      <input id="browser_email" type="text" name="input_username" placeholder="Enter email..." value="<%= @user.email %>">
+
+      <button>Update user</button>
+    </form>
+  </dd>
+</dl>
+
+<h2>All Flights (<%= @user.flights.count %>)</h2>
+
+<table border="1">
+  <tr>
+    <th>
+      Flight
+    </th>
+
+    <th>
+      Departs at
+    </th>
+
+    <th>
+      Locator
+    </th>
+
+    <th>
+      Alert Sent
+    </th>
+
+    <th></th>
+
+    <th></th>
+  </tr>
+
+  <% @user.upcoming_flights.each do |flight| %>
+  <tr>
+    <td>
+      <%= flight.id %>
+    </td>
+
+    <td>
+      <%= flight.departs_at %>
+    </td>
+
+    <td>
+      <%= flight.locator %>
+    </td>
+
+    <td>
+      <%= flight.alert_sent %>
+    </td>
+    
+    <td>
+      <a href="/flights/<%= flight.id %>">
+        Show details
+      </a>
+    </td>
+
+  </tr>
+
+  <% end %>
+</table>
+
+<table border="1">
+  <tr>
+    <th>
+      Flight
+    </th>
+
+    <th>
+      Departs at
+    </th>
+
+    <th>
+      Locator
+    </th>
+
+    <th>
+      Alert Sent
+    </th>
+
+    <th></th>
+
+    <th></th>
+  </tr>
+
+  <% @user.past_flights.each do |flight| %>
+  <tr>
+    <td>
+      <%= flight.id %>
+    </td>
+
+    <td>
+      <%= flight.departs_at %>
+    </td>
+
+    <td>
+      <%= flight.locator %>
+    </td>
+
+    <td>
+      <%= flight.alert_sent %>
+    </td>
+    
+    <td>
+      <a href="/flights/<%= flight.id %>">
+        Show details
+      </a>
+    </td>
+
+  </tr>
+
+  <% end %>
+</table>
+

@@ -23,7 +23,7 @@
         Departs at
       </dt>
       <dd>
-        <%= @flight.departs_at %>
+        <%= @flight.departs_at.strftime("%A, %B %d %Y at %r") %>
       </dd>
 
       <dt>

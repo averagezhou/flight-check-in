@@ -17,7 +17,7 @@ class FlightsController < ApplicationController
     @flight.departs_at = params.fetch("query_departs_at")
     @flight.locator = params.fetch("query_locator")
     @flight.description = params.fetch("query_description")
-    @flight.user_id = params.fetch("query_user_id")
+    @flight.user_id = session.fetch(:user_id)
     @flight.alert_sent = params.fetch("query_alert_sent", false)
 
     if @flight.valid?

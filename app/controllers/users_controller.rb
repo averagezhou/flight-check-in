@@ -5,6 +5,16 @@ class UsersController < ApplicationController
     render({ :template => "user_sessions/sign_up.html.erb" })
   end
 
+  def show
+    the_username = params.fetch("path_id")
+    @user = User.where({ :id => the_username }).at(0)
+    if session.fetch(:user_id) == @user.id
+      render({ :template => "users/show.html.erb"})
+    else
+    redirect_to("/user_sign_in", { :notice => "Not your account, b*tch >:(" })
+    end
+  end
+
   def create
     @user = User.new
     @user.email = params.fetch("query_email")
