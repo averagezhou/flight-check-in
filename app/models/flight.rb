@@ -15,4 +15,5 @@
 class Flight < ApplicationRecord
   validates :user_id, :presence => true
   validates :departs_at, :presence => true
+  belongs_to :user
 end
