@@ -33,7 +33,7 @@
         </li>
 
         <li>
-        <%= @current_user.email %>
+        <%= session.fetch(:user_id) %>
         </li>
       </ul>
     </nav>

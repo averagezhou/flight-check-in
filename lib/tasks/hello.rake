@@ -1,4 +1,4 @@
-task({ :send_sms => :environment }) do
+task({ :hello => :environment }) do
   p "Howdy"
   p "World!"
 end
