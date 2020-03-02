@@ -1,7 +1,9 @@
 class FlightsController < ApplicationController
   def index
-    @flights = Flight.all.order({ :created_at => :desc })
-
+    #@flights = Flight.all.order({ :created_at => :desc })
+    @flights = @current_user.flights
+    @upcoming_flights = @current_user.upcoming_flights
+    @past_flights = @current_user.past_flights
     render({ :template => "flights/index.html.erb" })
   end
 
@@ -9,7 +11,11 @@ class FlightsController < ApplicationController
     the_id = params.fetch("path_id")
     @flight = Flight.where({:id => the_id }).at(0)
 
-    render({ :template => "flights/show.html.erb" })
+    if @current_user.flights.pluck(:id).include? the_id
+      render({ :template => "flights/show.html.erb" })
+    else
+    redirect_to("/flights", { :alert => "Not your account >:("})
+    end
   end
 
   def create

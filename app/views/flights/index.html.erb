@@ -88,8 +88,7 @@
         </th>
       </tr>
       
-
-      <% @flights.each do |flight| %>
+      <% @upcoming_flights.each do |flight| %>
       <tr>
         <td>
           <%= flight.id %>
@@ -129,6 +128,7 @@
         </td>
       </tr>
       <% end %>
+
     </table>
   </div>
 </div>
