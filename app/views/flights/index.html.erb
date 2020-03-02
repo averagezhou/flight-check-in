@@ -50,6 +50,7 @@
 <hr>
 <div class="row mb-3">
   <div class="col-md-12">
+  <h2>Upcoming Flights (<%= @upcoming_flights.count %>)</h2>
     <table class="table">
       <tr>
         <th>
@@ -89,6 +90,89 @@
       </tr>
       
       <% @upcoming_flights.each do |flight| %>
+      <tr>
+        <td>
+          <%= flight.id %>
+        </td>
+
+        <td>
+          <%= flight.departs_at %>
+        </td>
+
+        <td>
+          <%= flight.locator %>
+        </td>
+
+        <td>
+          <%= flight.description %>
+        </td>
+
+        <td>
+          <%= flight.user_id %>
+        </td>
+
+        <td>
+          <%= flight.alert_sent %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(flight.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(flight.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/flights/<%= flight.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+
+    </table>
+
+
+    <h2>Past Flights (<%= @past_flights.count %>)</h2>
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Departs at
+        </th>
+
+        <th>
+          Locator
+        </th>
+
+        <th>
+          Description
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Alert sent
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+      
+      <% @past_flights.each do |flight| %>
       <tr>
         <td>
           <%= flight.id %>

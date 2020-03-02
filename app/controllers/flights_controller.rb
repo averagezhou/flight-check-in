@@ -2,8 +2,8 @@ class FlightsController < ApplicationController
   def index
     #@flights = Flight.all.order({ :created_at => :desc })
     @flights = @current_user.flights
-    @upcoming_flights = @current_user.upcoming_flights
-    @past_flights = @current_user.past_flights
+    @upcoming_flights = @current_user.upcoming_flights.order({ :departs_at => :asc })
+    @past_flights = @current_user.past_flights.order({ :departs_at => :desc })
     render({ :template => "flights/index.html.erb" })
   end
 
