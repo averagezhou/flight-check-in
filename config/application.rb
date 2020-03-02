@@ -34,6 +34,10 @@ module FinalProject
     # Load AdminUser model
     config.autoload_paths += %W(#{config.root}/vendor/app/models)
 
+    # Chicago time zone
+    config.time_zone = 'Central Time (US & Canada)'
+    config.active_record.default_timezone = :local
+
     config.action_controller.default_protect_from_forgery = false
     config.active_record.belongs_to_required_by_default = false
 
